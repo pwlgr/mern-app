@@ -8,7 +8,8 @@ const app = express();
 
 app.use(bodyParser.urlencoded({ extended: true }));
 
-mongoose.connect('mongodb://localhost:27017/mern');
+mongoose.set('useCreateIndex', true);
+mongoose.connect('mongodb://localhost:27017/mern', { useNewUrlParser: true });
 const db = mongoose.connection;
 db.on('open', () => console.log('connected'));
 
