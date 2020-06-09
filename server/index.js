@@ -6,7 +6,14 @@ const LocalStrategy = require('passport-local');
 const User = require('./models/user');
 const app = express();
 
+require('dotenv').config();
+
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(
+	require('express-session')({
+		secret: process.env.SESSION_SECRET
+	})
+);
 
 mongoose.set('useCreateIndex', true);
 mongoose.connect('mongodb://localhost:27017/mern', { useNewUrlParser: true });
