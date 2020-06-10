@@ -12,12 +12,12 @@ app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 mongoose.set('useCreateIndex', true);
-mongoose.connect('mongodb://localhost:27017/mern', { useNewUrlParser: true });
+mongoose.connect('mongodb://localhost:27017/mern', { useNewUrlParser: true, useUnifiedTopology: true });
 
 const db = mongoose.connection;
+const PORT = process.env.PORT || 5000;
 
 db.on('open', () => console.log('connected'));
-
 app.get('/', (req, res) => {
 	res.send({ hi: 'there' });
 });
@@ -47,6 +47,29 @@ app.post('/register', async (req, res) => {
 	}
 });
 
-const PORT = process.env.PORT || 5000;
+app.post('/login', async (req, res) => {
+	try {
+		const { email, password } = req.body;
+
+		// validate
+		if (!email || !password) return res.status(400).json({ msg: 'Not all fields have been entered.' });
+
+		const user = await User.findOne({ email: email });
+		if (!user) return res.status(400).json({ msg: 'No account with this email has been registered.' });
+
+		const isMatch = await bcrypt.compare(password, user.password);
+		if (!isMatch) return res.status(400).json({ msg: 'Invalid credentials.' });
+
+		const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET);
+		res.json({
+			token,
+			user: {
+				id: user._id
+			}
+		});
+	} catch (err) {
+		res.status(500).json({ error: err.message });
+	}
+});
 
 app.listen(PORT);
