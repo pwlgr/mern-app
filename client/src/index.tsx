@@ -1,27 +1,49 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.scss';
-import App from './components/App';
-import { ThemeProvider } from '@material-ui/core/styles';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import theme from './theme';
-import * as serviceWorker from './serviceWorker';
-
+import * as React from 'react';
+import * as ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
+import configureStore, { history } from './app/functionals/store';
+import App from './app';
+import LanguageContainer from './app/containers/Language/LanguageContainer';
+const { translationMessages } = require('./app/i18n');
+import './app/styles/style.scss';
 
-import store from './store';
+const store = configureStore();
+const render = (messages: {}) => {
+  ReactDOM.render(
+    <Provider store={store}>
+      <LanguageContainer messages={messages}>
+        <App history={history} />
+      </LanguageContainer>
+    </Provider>,
+    document.getElementById('root'),
+  );
+};
 
-ReactDOM.render(
-    <ThemeProvider theme={theme}>
-        <CssBaseline />
-        <Provider store={store}>
-            {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
-            <App />
-        </Provider>
-    </ThemeProvider>
-    , document.getElementById('root'));
+if (module.hot) {
+  module.hot.accept(['./app/i18n', './app/components/App/App'], () => {
+    ReactDOM.unmountComponentAtNode(document.getElementById('root') as HTMLElement);
+    render(translationMessages);
+  });
+}
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();
+declare global {
+  interface Window { Intl: any; }
+}
+
+if (!window.Intl) {
+  new Promise((resolve) => {
+    resolve(import('intl'));
+  })
+    .then(() =>
+      Promise.all([
+        require('intl/locale-data/jsonp/en.js'),
+        require('intl/locale-data/jsonp/de.js'),
+      ]),
+  )
+    .then(() => render(translationMessages))
+    .catch((err) => {
+      throw err;
+    });
+} else {
+  render(translationMessages);
+}

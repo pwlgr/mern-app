@@ -1,0 +1,22 @@
+.ul-flag{
+  display: block;
+  overflow: hidden;
+  li{
+    margin: 0px 5px;
+    display: inline-block;
+    i{
+      width: 30px;
+      height: 30px;
+      background-size: contain;
+      background-origin: content-box;
+      text-align: center;
+      display: block;
+      &.en{
+        background-image: url("../../../public/images/english.jpg");
+      }
+      &.fr{
+        background-image: url("../../../public/images/france.png");
+      }
+    }
+  }
+}
