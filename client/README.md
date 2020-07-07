@@ -1,63 +1,68 @@
-# Newzik Front-end Project
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-The Front-end project for the Third-party Login Plugin
-- Applied latest all techincal(Webpack, lazy load, connect-redux-router ...)
+## Available Scripts
 
-## All Lib Devdependencies
+In the project directory, you can run:
 
-- npm i -save-dev @types/classnames @types/history @types/lodash @types/node @types/react @types/react-dom @types/react-redux @types/react-router @types/redux-actions @types/webpack  @types/webpack-env @babel/core @types/enzyme @types/enzyme-adapter-react-16 @types/intl @types/jest @types/opentype.js  @types/react-intl @types/react-router-dom  @types/redux-form @types/redux-immutable  @types/redux-mock-store  @types/reselect  axios  babel-loader cross-env css-loader  enzyme extract-text-webpack-plugin enzyme-adapter-react-16  file-loader font-awesome html-loader html-webpack-plugin lodash  mini-css-extract-plugin  normalizr prettier redux-devtools-extension redux-mock-store style-loader ts-loader tslint-react typescript  url-loader webpack webpack-cleanup-plugin webpack-cli webpack-dev-server immutable bootstrap-scss classnames cors dotenv-webpack history intl jest node-sass react-intl reselect sass-loader ts-jest tslint tslint-config-airbnb terser-webpack-plugin optimize-css-assets-webpack-plugin
-- npm i --save-dev bookstrap
-- npm i -save-dev @material-ui/core (test)
-- npm i -save-dev bootstrap flag-icon-css reactstrap
-- npm i -save-dev @coreui/coreui @coreui/coreui-plugin-chartjs-custom-tooltips @coreui/icons @coreui/react
+### `yarn start`
 
-## All Lib dependencies
+Runs the app in the development mode.<br />
+Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-- npm install -save react react-dom react-redux react-router react-router-dom react-router-redux redux redux-actions redux-form redux-immutable redux-saga
+The page will reload if you make edits.<br />
+You will also see any lint errors in the console.
 
-## Technical Applied
-- React & Redux saga, redux form & Typescript
-- Multiple language : react-intl
-- Router : connected-react-router , react-router-dom
-- React lazy load
-- Webpack >= 4
-- scss, bookstrap
-- Config Multiple Environment (cross-env)
-- axios : GET,SET,PUT,PATCH for API
-- reselect get data from redux store
-- Immutable record
+### `yarn test`
 
-## Setup
--- Need download and run API node js : https://github.com/HeroTran/Node-API-Authentication
+Launches the test runner in the interactive watch mode.<br />
+See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-```
-- Install web app dependencies:
+### `yarn build`
 
-$ npm install
+Builds the app for production to the `build` folder.<br />
+It correctly bundles React in production mode and optimizes the build for the best performance.
 
-## Running
+The build is minified and the filenames include the hashes.<br />
+Your app is ready to be deployed!
 
-```
+See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-- Start web app:
+### `yarn eject`
 
-$ npm start
-```
+**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
 
-## Build
+If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-```
-$ npm run build
-```
+Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
 
+You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
-## Troubleshooting
+## Learn More
 
-```
-- Try to remove node_modules folder and run "npm install" again
-```
+You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
+To learn React, check out the [React documentation](https://reactjs.org/).
 
-# License
+### Code Splitting
 
-MIT
+This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+
+### Analyzing the Bundle Size
+
+This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+
+### Making a Progressive Web App
+
+This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
+
+### Advanced Configuration
+
+This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
+
+### Deployment
+
+This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
+
+### `yarn build` fails to minify
+
+This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
