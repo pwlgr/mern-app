@@ -3,4 +3,4 @@
 /client/node_modules
 Node-API-Authentication
 keys.js
-dev.js
+/server/config/dev.js
