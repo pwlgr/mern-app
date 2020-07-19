@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { useEffect } from 'react';
+import { Link } from 'react-router-dom';
 
 const Header = (props) => {
 	const renderContent = () => {
@@ -22,12 +23,14 @@ const Header = (props) => {
 		}
 	};
 
+	const { auth } = props;
+
 	return (
 		<nav>
 			<div className="nav-wrapper">
-				<a href="#" className="left brand-logo">
+				<Link to={auth ? '/feedbacks' : '/'} className="left brand-logo">
 					Feedback
-				</a>
+				</Link>
 				<ul id="nav-mobile" className="right hide-on-med-and-down">
 					{renderContent()}
 				</ul>
