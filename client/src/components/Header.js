@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
+import Payments from './Payments';
+
 const Header = (props) => {
 	const renderContent = () => {
 		switch (props.auth) {
@@ -15,11 +17,14 @@ const Header = (props) => {
 					</li>
 				);
 			default:
-				return (
+				return [
+					<li>
+						<Payments />
+					</li>,
 					<li>
 						<a href="/api/logout">Logout</a>
 					</li>
-				);
+				];
 		}
 	};
 
