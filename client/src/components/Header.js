@@ -5,9 +5,9 @@ import { Link } from 'react-router-dom';
 
 import Payments from './Payments';
 
-const Header = (props) => {
+const Header = ({ auth }) => {
 	const renderContent = () => {
-		switch (props.auth) {
+		switch (auth) {
 			case null:
 				return;
 			case false:
@@ -21,15 +21,13 @@ const Header = (props) => {
 					<li key="1">
 						<Payments />
 					</li>,
-					<li>Credits: {props.auth.credits}</li>,
+					<li style={{ margin: '0 10px' }}>Credits: {auth.credits}</li>,
 					<li key="2">
 						<a href="/api/logout">Logout</a>
 					</li>
 				];
 		}
 	};
-
-	const { auth } = props;
 
 	return (
 		<nav>
